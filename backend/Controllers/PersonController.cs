@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
@@ -7,8 +8,17 @@ namespace backend.Controllers
     public class PersonController : ControllerBase
     {
         [HttpGet]//Decorator
-        public IActionResult Get(){
-            return Ok("Kauê");
+        public IActionResult Get()
+        {
+            try
+            {
+                return Ok("");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro:{ex.Message}");
+
+            }
         }
     }
 }
