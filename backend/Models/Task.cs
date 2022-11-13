@@ -1,8 +1,7 @@
 namespace backend.Models
 {
     public class TaskModel
-    {   
-        public TaskModel(){ }
+    {    
         public TaskModel(int id, int idPerson, string description)
         {
             this.id = id;
@@ -12,6 +11,6 @@ namespace backend.Models
 
         public int id { get; set; }
         public int idPerson { get; set; }
-        public string description { get; set; }
+        public string? description { get; set; }
     }
 }

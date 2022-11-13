@@ -8,7 +8,15 @@ namespace backend.Controllers
     {
         [HttpGet]//Decorator
         public IActionResult Get(){
-            return Ok("Passeando");
+          try
+            {
+                return Ok("");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro:{ex.Message}");
+
+            }
         }
     }
 }
