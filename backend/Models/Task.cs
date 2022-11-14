@@ -2,6 +2,7 @@ namespace backend.Models
 {
     public class TaskModel
     {    
+        public TaskModel(){ }
         public TaskModel(int id, int idPerson, string description)
         {
             this.id = id;
