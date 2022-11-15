@@ -1,13 +1,20 @@
-using System;
+using backend.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PersonController : ControllerBase
+    public class JobController : ControllerBase
     {
-        [HttpGet]//Decorator
+        private readonly IRepository repo;
+
+        public JobController(IRepository repo)
+        {
+            this.repo = repo;
+        }
+
+        [HttpGet] //Decorator
         public IActionResult Get()
         {
             try
@@ -17,7 +24,6 @@ namespace backend.Controllers
             catch (Exception ex)
             {
                 return BadRequest($"Erro:{ex.Message}");
-
             }
         }
     }
