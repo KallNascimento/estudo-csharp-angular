@@ -12,12 +12,12 @@ namespace backend.Data
         Task<bool> SaveChangesAsync();
 
         //Pessoa
-        Task<Person[]> GetAllPeopleAsync(bool includeJob);
-        Task<Person> GetPeopleAsyncById(int personId, bool includeJob);
+        Task<User[]> GetAllUsersAsync(bool includeTodo);
+        Task<User> GetUserAsyncById(int userId, bool includeTodo);
 
         //Tarefas
-        Task<Job[]> GetAllJobsAsync(bool includePerson);
-        Task<Job> GetJobAsyncById(int jobId, bool includePerson);
+        Task<Todo[]> GetAllTodosAsync(bool includeUser);
+        Task<Todo> GetTodoAsyncById(int todoId, bool includeUser);
 
     }
 }

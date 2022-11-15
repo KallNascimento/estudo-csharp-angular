@@ -1,10 +1,10 @@
 namespace backend.Models
 {
-    public class Person
+    public class User
     {
+        public User() { }
 
-        public Person() { }
-        public Person(int id, string name)
+        public User(int id, string name)
         {
             this.Id = id;
             this.Name = name;
@@ -12,6 +12,6 @@ namespace backend.Models
 
         public int Id { get; set; }
         public string? Name { get; set; }
-
+        public IEnumerable<Todo>? Todos { get; set; }
     }
 }

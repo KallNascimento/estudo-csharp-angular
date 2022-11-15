@@ -11,6 +11,7 @@ namespace backend.Data
         {
             _context = context;
         }
+
         public void Add<T>(T entity) where T : class
         {
             _context.Add(entity);
@@ -23,52 +24,52 @@ namespace backend.Data
 
         public void Delete<T>(T entity) where T : class
         {
-
             _context.Remove(entity);
         }
 
         public async Task<bool> SaveChangesAsync()
         {
-             return (await _context.SaveChangesAsync()) > 0;
+            return (await _context.SaveChangesAsync()) > 0;
         }
 
-        public Task<Person[]> GetAllPeopleAsync(bool includeJob = true)
+        //-----------                                           ----------------------//
+
+        public async Task<User[]> GetAllUsersAsync(bool includeTodo = true)
         {
-           IQueryable<Person> query = _context.Person;
+            IQueryable<User> query = (IQueryable<User>)_context.Todos;
 
-           if(includeJob){
-            query  = query.Include(c=>c.Job)
-           }
-           query = query.AsNoTracking().OrderBy(person=>person.Id)
-           return   await query.ToArrayAsync();
-        }
-
-        public async Task<Person> GetPeopleAsyncById(int personId, bool includeJob)
-        {
-            IQueryable<Person> query = (IQueryable<Person>)_context.Jobs;
-
-            if(includeJob){
-                query = query.Include(pe => pe.Jobs);
+            if (includeTodo)
+            {
+                query = query.Include(c => c.Todos);
             }
-            query = query.AsNoTracking()
-            .OrderBy(person => person.Id)
-            .Where(person => person.Id == personId);
+            query = query.AsNoTracking().OrderBy(person => person.Id);
+            return await query.ToArrayAsync();
+        }
+
+        public async Task<User> GetUserAsyncById(int personId, bool includeTodo)
+        {
+            IQueryable<User> query = (IQueryable<User>)_context.Todos;
+
+            if (includeTodo)
+            {
+                query = query.Include(u => u.Name);
+            }
+            query = query
+                .AsNoTracking()
+                .OrderBy(person => person.Id)
+                .Where(person => person.Id == personId);
 
             return await query.FirstOrDefaultAsync();
         }
-        public Task<Job[]> GetAllJobsAsync(bool includePerson)
+
+        public Task<Todo[]> GetAllTodosAsync(bool includePerson)
         {
             throw new NotImplementedException();
         }
 
-       
-
-        public Task<Job> GetJobAsyncById(int jobId, bool includePerson)
+        public Task<Todo> GetTodoAsyncById(int todoId, bool includeUser)
         {
             throw new NotImplementedException();
         }
-
-        
-
     }
 }
