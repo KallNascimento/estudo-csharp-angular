@@ -1,4 +1,5 @@
 using System;
+using backend.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
@@ -7,6 +8,10 @@ namespace backend.Controllers
     [Route("api/[controller]")]
     public class PersonController : ControllerBase
     {
+        public PersonController(IRepository repo)
+        {
+
+        }
         [HttpGet]//Decorator
         public IActionResult Get()
         {

@@ -6,12 +6,12 @@ namespace backend.Models
         public Person() { }
         public Person(int id, string name)
         {
-            this.id = id;
-            this.name = name;
+            this.Id = id;
+            this.Name = name;
         }
 
-        public int id { get; set; }
-        public string? name { get; set; }
+        public int Id { get; set; }
+        public string? Name { get; set; }
 
     }
 }
