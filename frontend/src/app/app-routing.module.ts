@@ -6,7 +6,7 @@ import { UserMasterComponent } from './components/user-master/user-master.compon
 const routes: Routes = [
   {path:"user", component:UserMasterComponent},
   {path:"todo",component:TodoMasterComponent},
-  {path:"", redirectTo:"user"}
+  {path:"", pathMatch:'full' ,redirectTo:"user"}
 ];
 
 @NgModule({
