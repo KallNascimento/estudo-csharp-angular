@@ -1,75 +1,69 @@
+﻿using System;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend.Data
+namespace backend.Data;
+
+public class Repository : IRepository
 {
-    public class Repository : IRepository
+    private readonly DataContext _context;
+
+    public Repository(DataContext context)
     {
-        private readonly DataContext _context;
+        _context = context;
+    }
 
-        public Repository(DataContext context)
+    public void Add<T>(T entity) where T : class
+    {
+        _context.Add(entity);
+    }
+
+    public void Update<T>(T entity) where T : class
+    {
+        _context.Update(entity);
+    }
+
+    public void Delete<T>(T entity) where T : class
+    {
+        _context.Remove(entity);
+    }
+
+    public bool SaveChanges()
+    {
+        return (_context.SaveChanges() > 0);
+    }
+
+    public User[] GetAllUsers(bool includeTodos = false)
+    {
+        IQueryable<User> query = _context.Users;
+
+        if (includeTodos)
         {
-            _context = context;
+            query = query.Include(p => p.Todos);
+
         }
 
-        public void Add<T>(T entity) where T : class
+        query = query.AsNoTracking().OrderBy(p => p.Id);
+
+        return query.ToArray();
+    }
+
+    public User GetUserById(int userId, bool includeTodo = false)
+    {
+        IQueryable<User> query = _context.Users;
+
+        if (includeTodo)
         {
-            _context.Add(entity);
+            query = query.Include(p => p.Todos);
+
         }
 
-        public void Update<T>(T entity) where T : class
-        {
-            _context.Update(entity);
-        }
+        query = query.AsNoTracking()
+                     .OrderBy(t => t.Id)
+                     .Where(user => user.Id == userId);
 
-        public void Delete<T>(T entity) where T : class
-        {
-            _context.Remove(entity);
-        }
-
-        public async Task<bool> SaveChangesAsync()
-        {
-            return (await _context.SaveChangesAsync()) > 0;
-        }
-
-        //-----------                                           ----------------------//
-
-        public async Task<User[]> GetAllUsersAsync(bool includeTodo = true)
-        {
-            IQueryable<User> query = (IQueryable<User>)_context.Todos;
-
-            if (includeTodo)
-            {
-                query = query.Include(c => c.Todos);
-            }
-            query = query.AsNoTracking().OrderBy(person => person.Id);
-            return await query.ToArrayAsync();
-        }
-
-        public async Task<User> GetUserAsyncById(int personId, bool includeTodo)
-        {
-            IQueryable<User> query = (IQueryable<User>)_context.Todos;
-
-            if (includeTodo)
-            {
-                query = query.Include(u => u.Name);
-            }
-            query = query
-                .AsNoTracking()
-                .OrderBy(person => person.Id)
-                .Where(person => person.Id == personId);
-
-            return await query.FirstOrDefaultAsync();
-        }
-
-        public Task<Todo[]> GetAllTodosAsync(bool includePerson)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Todo> GetTodoAsyncById(int todoId, bool includeUser)
-        {
-            throw new NotImplementedException();
-        }
+        return query.FirstOrDefault();
     }
 }
+
+

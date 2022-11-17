@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{947A0979-1E07-43EF-87EF-0C6F4B8C130C}|https">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.backend PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Profiles/UserProfile.cs">
+    <Files>
+      <File FileName="Data/IRepository.cs" Line="18" Column="1" />
+      <File FileName="Data/Repository.cs" Line="39" Column="1" />
+      <File FileName="Controllers/TodoController.cs" Line="21" Column="10" />
+      <File FileName="Profiles/UserProfile.cs" Line="22" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="backend" expanded="True">
+            <Node name="backend" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Dtos" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Profiles" expanded="True">
+                <Node name="UserProfile.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

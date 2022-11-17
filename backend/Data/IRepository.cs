@@ -1,23 +1,22 @@
+﻿using System;
 using backend.Models;
 
-namespace backend.Data
+namespace backend.Data;
+
+
+public interface IRepository
 {
-    public interface IRepository
-    {
-        //Assinatura dos metodos
-        //GERAL
-        void Add<T>(T entity) where T : class;
-        void Update<T>(T entity) where T : class;
-        void Delete<T>(T entity) where T : class;
-        Task<bool> SaveChangesAsync();
 
-        //Pessoa
-        Task<User[]> GetAllUsersAsync(bool includeTodo);
-        Task<User> GetUserAsyncById(int userId, bool includeTodo);
+    void Add<T>(T entity) where T : class;
+    void Update<T>(T entity) where T : class;
+    void Delete<T>(T entity) where T : class;
+    bool SaveChanges();
 
-        //Tarefas
-        Task<Todo[]> GetAllTodosAsync(bool includeUser);
-        Task<Todo> GetTodoAsyncById(int todoId, bool includeUser);
 
-    }
+    User[] GetAllUsers(bool includeTodos = false);
+    User GetUserById(int userId, bool includeTodos = false);
+
+
 }
+
+
