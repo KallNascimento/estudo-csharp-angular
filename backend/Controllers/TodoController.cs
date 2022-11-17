@@ -5,13 +5,19 @@ namespace backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class JobController : ControllerBase
+    public class TodoController : ControllerBase
     {
-        private readonly IRepository repo;
+        public readonly IRepository _repo;
+        private readonly DataContext _context;
 
-        public JobController(IRepository repo)
+        public TodoController(DataContext context)
         {
-            this.repo = repo;
+            _context = context;
+        }
+
+        public TodoController(IRepository repo)
+        {
+            _repo = repo;
         }
 
         [HttpGet] //Decorator

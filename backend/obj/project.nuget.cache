@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "VY5elngRlO7HXcNuDEZgXPALE8S5FpdR8PjDDVXeIEc7QVqSR3Wb7mAAIQCWJK8czn0tbFb71uKStRGaZwdVRQ==",
+  "dgSpecHash": "a1oRmCHOqtmazn5oQohxwo6i4OUAJ5DHxaOF1hLD4CD+4pHeMlgLOqZZMwdfuQRz1eiCw7Tg1Ot0Gjc+PYiLqQ==",
   "success": true,
   "projectFilePath": "/Users/kaue/Projects/estudo-csharp-angular/backend/backend.csproj",
   "expectedPackageFiles": [
+    "/Users/kaue/.nuget/packages/automapper/12.0.0/automapper.12.0.0.nupkg.sha512",
+    "/Users/kaue/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.0/automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "/Users/kaue/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/kaue/.nuget/packages/microsoft.aspnetcore.jsonpatch/7.0.0/microsoft.aspnetcore.jsonpatch.7.0.0.nupkg.sha512",
     "/Users/kaue/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/7.0.0/microsoft.aspnetcore.mvc.newtonsoftjson.7.0.0.nupkg.sha512",
