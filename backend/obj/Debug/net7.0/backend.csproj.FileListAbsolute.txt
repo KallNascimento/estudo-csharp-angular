@@ -47,3 +47,9 @@
 /Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.pdb
 /Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.genruntimeconfig.cache
 /Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/ref/backend.dll
+/Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/dist/web.config
+/Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/dist/appsettings.Development.json
+/Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/dist/appsettings.json
+/Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/dist/backend.deps.json
+/Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/dist/backend.runtimeconfig.json
+/Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/backend.xml
