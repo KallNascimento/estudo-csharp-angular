@@ -4,9 +4,9 @@ import { TodoMasterComponent } from './components/todo-master/todo-master.compon
 import { UserMasterComponent } from './components/user-master/user-master.component';
 
 const routes: Routes = [
-  {path:"user", component:UserMasterComponent},
-  {path:"todo",component:TodoMasterComponent},
-  {path:"", pathMatch:'full' ,redirectTo:"user"}
+  { path: "user", component: UserMasterComponent },
+  { path: "todo", component: TodoMasterComponent },
+  { path: "", pathMatch: 'full', redirectTo: "user" }
 ];
 
 @NgModule({
