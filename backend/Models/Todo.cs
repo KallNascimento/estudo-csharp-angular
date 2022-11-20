@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models;
+
 [Table("Todos")]
 public class Todo
 {
@@ -9,18 +10,17 @@ public class Todo
     public Todo(int id, string description, int userId)
     {
         this.Id = id;
-        this.Description = description;
-        this.UserId = userId;
-
+        this.description = description;
+        this.userid = userid;
     }
 
-    [Column("Id")]
+    [Column("id")]
     public int Id { get; set; }
-    [Column("Description")]
-    public string? Description { get; set; }
+
+    [Column("description")]
+    public string? description { get; set; }
     public User? user { get; set; }
-    [Column("userId")]
-    public int UserId { get; set; }
 
+    [Column("userid")]
+    public int userid { get; set; }
 }
-
