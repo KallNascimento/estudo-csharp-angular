@@ -1,11 +1,6 @@
 /Users/kaue/Projects/estudo-csharp-angular/backend/out/backend
-/Users/kaue/Projects/estudo-csharp-angular/backend/out/dist/web.config
 /Users/kaue/Projects/estudo-csharp-angular/backend/out/appsettings.Development.json
 /Users/kaue/Projects/estudo-csharp-angular/backend/out/appsettings.json
-/Users/kaue/Projects/estudo-csharp-angular/backend/out/dist/appsettings.Development.json
-/Users/kaue/Projects/estudo-csharp-angular/backend/out/dist/appsettings.json
-/Users/kaue/Projects/estudo-csharp-angular/backend/out/dist/backend.deps.json
-/Users/kaue/Projects/estudo-csharp-angular/backend/out/dist/backend.runtimeconfig.json
 /Users/kaue/Projects/estudo-csharp-angular/backend/out/backend.dll
 /Users/kaue/Projects/estudo-csharp-angular/backend/out/backend.deps.json
 /Users/kaue/Projects/estudo-csharp-angular/backend/out/backend.runtimeconfig.json

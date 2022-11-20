@@ -10,8 +10,8 @@ namespace backend.Data
         /*Tabelas que serão criadas no DB e acessar através
         do datacontext
         */
-        public DbSet<User>? Users { get; set; }
-        public DbSet<Todo>? Todos { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Todo> Todos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -1,5 +1,4 @@
-﻿using System;
-namespace backend.Dtos;
+﻿namespace backend.Dtos;
 
 public class UserRegisterDto
 {

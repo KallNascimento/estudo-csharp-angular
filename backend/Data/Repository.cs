@@ -38,10 +38,10 @@ public class Repository : IRepository
 
         if (includeTodos)
         {
-            query = query.Include(p => p.Todos);
+            query = query.Include(t => t.Todos);
         }
 
-        query = query.AsNoTracking().OrderBy(p => p.Id);
+        query = query.AsNoTracking().OrderBy(t => t.Id);
 
         return query.ToArray();
     }
@@ -52,10 +52,10 @@ public class Repository : IRepository
 
         if (includeTodo)
         {
-            query = query.Include(p => p.Todos);
+            query = query.Include(t => t.Todos);
         }
 
-        query = query.AsNoTracking().OrderBy(t => t.Id).Where(user => user.Id == userId);
+        query = query.AsNoTracking().OrderBy(u => u.Name).Where(user => user.Id == userId);
 
         return query.FirstOrDefault();
     }
@@ -64,7 +64,7 @@ public class Repository : IRepository
     {
         IQueryable<Todo> query = _context.Todos;
 
-        query = query.AsNoTracking().OrderBy(t => t.Id).Where(todo => todo.Id == todoId);
+        query = query.AsNoTracking().OrderBy(todo => todo.Id).Where(todo => todo.Id == todoId);
 
         return query.FirstOrDefault();
     }
@@ -73,7 +73,7 @@ public class Repository : IRepository
     {
         IQueryable<Todo> query = _context.Todos;
 
-        query = query.AsNoTracking().OrderBy(t => t.Id);
+        query = query.AsNoTracking();
 
         return query.ToArray();
     }

@@ -1,6 +1,7 @@
 using AutoMapper;
 using backend.Data;
 using backend.Dtos;
+using backend.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
@@ -24,7 +25,7 @@ public class TodoController : ControllerBase
         try
         {
             var Todo = _repo.GetAllTodos();
-            return Ok(_mapper.Map <IEnumerable<TodoDto>>(Todo));
+            return Ok(_mapper.Map<IEnumerable<TodoDto>>(Todo));
         }
         catch (Exception ex)
         {
@@ -47,5 +48,19 @@ public class TodoController : ControllerBase
         {
             return BadRequest($"Erro:{ex.Message}");
         }
+    }
+
+    [HttpPost]
+    public IActionResult Post(TodoRegisterDto model)
+    {
+        var todo = _mapper.Map<Todo>(model);
+
+        _repo.Add(todo);
+        if (_repo.SaveChanges())
+        {
+            return Created($"/api/todo/{model.Id}", _mapper.Map<TodoDto>(todo));
+        }
+
+        return BadRequest("Tarefa não cadastrada.");
     }
 }

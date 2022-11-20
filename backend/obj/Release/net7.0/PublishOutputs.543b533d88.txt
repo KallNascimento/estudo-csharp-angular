@@ -1,6 +1,11 @@
 /Users/kaue/Projects/estudo-csharp-angular/backend/dist/backend
+/Users/kaue/Projects/estudo-csharp-angular/backend/dist/out/web.config
 /Users/kaue/Projects/estudo-csharp-angular/backend/dist/appsettings.Development.json
 /Users/kaue/Projects/estudo-csharp-angular/backend/dist/appsettings.json
+/Users/kaue/Projects/estudo-csharp-angular/backend/dist/out/appsettings.Development.json
+/Users/kaue/Projects/estudo-csharp-angular/backend/dist/out/appsettings.json
+/Users/kaue/Projects/estudo-csharp-angular/backend/dist/out/backend.deps.json
+/Users/kaue/Projects/estudo-csharp-angular/backend/dist/out/backend.runtimeconfig.json
 /Users/kaue/Projects/estudo-csharp-angular/backend/dist/backend.dll
 /Users/kaue/Projects/estudo-csharp-angular/backend/dist/backend.deps.json
 /Users/kaue/Projects/estudo-csharp-angular/backend/dist/backend.runtimeconfig.json
@@ -26,3 +31,4 @@
 /Users/kaue/Projects/estudo-csharp-angular/backend/dist/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/kaue/Projects/estudo-csharp-angular/backend/dist/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/kaue/Projects/estudo-csharp-angular/backend/dist/System.CodeDom.dll
+/Users/kaue/Projects/estudo-csharp-angular/backend/dist/backend.xml

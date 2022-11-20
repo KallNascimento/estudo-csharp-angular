@@ -2,9 +2,7 @@ using backend.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
-
 builder.Services
     .AddControllers()
     .AddNewtonsoftJson(
@@ -21,7 +19,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(
     conection =>
-        conection.UseNpgsql("Host=localhost;Database=estudo;Username=postgres;Password=root")
+        conection.UseNpgsql("Host=localhost;Port=5432;Database=estudo;User Id=postgres;Password=root")
+        
 );
 
 /*Scoped: garante que em uma requisição seja criada um instância de um classe onde se houver outras dependências, seja utilizada essa única instância pra todas, renovando somente nas requisições subsequentes,
