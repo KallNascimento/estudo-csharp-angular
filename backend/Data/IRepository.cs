@@ -1,8 +1,7 @@
-﻿using System;
+﻿
 using backend.Models;
 
 namespace backend.Data;
-
 
 public interface IRepository
 {
@@ -12,11 +11,9 @@ public interface IRepository
     void Delete<T>(T entity) where T : class;
     bool SaveChanges();
 
-
     User[] GetAllUsers(bool includeTodos = false);
     User GetUserById(int userId, bool includeTodos = false);
-
-
+    Todo[] GetAllTodos();
+     Todo GetTodoById(int todoId);
 }
-
 

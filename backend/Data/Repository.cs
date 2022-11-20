@@ -1,5 +1,4 @@
-﻿using System;
-using backend.Models;
+﻿using backend.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Data;
@@ -40,7 +39,6 @@ public class Repository : IRepository
         if (includeTodos)
         {
             query = query.Include(p => p.Todos);
-
         }
 
         query = query.AsNoTracking().OrderBy(p => p.Id);
@@ -55,15 +53,28 @@ public class Repository : IRepository
         if (includeTodo)
         {
             query = query.Include(p => p.Todos);
-
         }
 
-        query = query.AsNoTracking()
-                     .OrderBy(t => t.Id)
-                     .Where(user => user.Id == userId);
+        query = query.AsNoTracking().OrderBy(t => t.Id).Where(user => user.Id == userId);
 
         return query.FirstOrDefault();
     }
+
+    public Todo GetTodoById(int todoId)
+    {
+        IQueryable<Todo> query = _context.Todos;
+
+        query = query.AsNoTracking().OrderBy(t => t.Id).Where(todo => todo.Id == todoId);
+
+        return query.FirstOrDefault();
+    }
+
+    public Todo[] GetAllTodos()
+    {
+        IQueryable<Todo> query = _context.Todos;
+
+        query = query.AsNoTracking().OrderBy(t => t.Id);
+
+        return query.ToArray();
+    }
 }
-
-
