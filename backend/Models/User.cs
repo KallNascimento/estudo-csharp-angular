@@ -11,9 +11,9 @@ public class User
         this.Id = id;
         this.Name = name;
     }
-    [Column("Id")]
+    [Column("id")]
     public int Id { get; set; }
-    [Column("Name")]
+    [Column("name")]
     public string? Name { get; set; }
     public IEnumerable<Todo>? Todos { get; set; }
 }

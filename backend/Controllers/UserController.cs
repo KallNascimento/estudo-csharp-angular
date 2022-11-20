@@ -54,7 +54,7 @@ public class UserController : ControllerBase
         _repo.Add(user);
         if (_repo.SaveChanges())
         {
-            return Created($"/api/user/{model.Id}", _mapper.Map<UserDto>(user));
+            return Created($"/api/user/{model.id}", _mapper.Map<UserDto>(user));
         }
 
         return BadRequest("Usuário não cadastrado");
@@ -72,7 +72,7 @@ public class UserController : ControllerBase
         _repo.Update(user);
         if (_repo.SaveChanges())
         {
-            return Created($"/api/user/{model.Id}", _mapper.Map<UserDto>(user));
+            return Created($"/api/user/{model.id}", _mapper.Map<UserDto>(user));
         }
 
         return BadRequest("Usuário não Atualizado");
@@ -90,7 +90,7 @@ public class UserController : ControllerBase
         _repo.Update(user);
         if (_repo.SaveChanges())
         {
-            return Created($"/api/user/{model.Id}", _mapper.Map<UserDto>(user));
+            return Created($"/api/user/{model.id}", _mapper.Map<UserDto>(user));
         }
 
         return BadRequest("Usuário não Atualizado");

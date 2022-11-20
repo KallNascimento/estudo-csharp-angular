@@ -8,8 +8,8 @@ public class TodoProfile : Profile
 {
     public TodoProfile()
     {
-        CreateMap<TodoDto, Todo>()
-            .ForMember(dest => dest.Description, opt => opt.MapFrom(src => $"{src.Description}"));
+        CreateMap<Todo,TodoDto>()
+            .ForMember(dest => dest.description, opt => opt.MapFrom(src => $"{src.description}"));
         CreateMap<TodoDto, Todo>();
         CreateMap<TodoProfile, TodoRegisterDto>().ReverseMap();
     }
