@@ -39,8 +39,7 @@ public class TodoController : ControllerBase
         var Todo = _repo.GetTodoById(id);
         try
         {
-            if (User == null)
-                return BadRequest("Tarefa não encontrada");
+            
             var todoDto = _mapper.Map<TodoDto>(Todo);
             return Ok(Todo);
         }
@@ -62,5 +61,17 @@ public class TodoController : ControllerBase
         }
 
         return BadRequest("Tarefa não cadastrada.");
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult Put(int id, TodoRegisterDto model){
+        var todo = _repo.GetTodoById(id);
+        if(todo==null) return BadRequest("Tarefa não encontrada");
+
+        _mapper.Map(model, todo);
+        if(_repo.SaveChanges()){
+            return Created($"/api/todo/{model.id}",_mapper.Map<TodoDto>(todo));
+        }
+        return BadRequest("Tarefa não foi atualizada.");
     }
 }

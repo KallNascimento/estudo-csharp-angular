@@ -1,3 +1,10 @@
+/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.csproj.AssemblyReference.cache
+/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.GeneratedMSBuildEditorConfig.editorconfig
+/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.AssemblyInfoInputs.cache
+/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.AssemblyInfo.cs
+/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.csproj.CoreCompileInputs.cache
+/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.MvcApplicationPartsAssemblyInfo.cs
+/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.MvcApplicationPartsAssemblyInfo.cache
 /Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/appsettings.Development.json
 /Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/appsettings.json
 /Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/backend
@@ -27,13 +34,6 @@
 /Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/kaue/Projects/estudo-csharp-angular/backend/bin/Debug/net7.0/System.CodeDom.dll
-/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.csproj.AssemblyReference.cache
-/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.GeneratedMSBuildEditorConfig.editorconfig
-/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.AssemblyInfoInputs.cache
-/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.AssemblyInfo.cs
-/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.csproj.CoreCompileInputs.cache
-/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.MvcApplicationPartsAssemblyInfo.cs
-/Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/backend.MvcApplicationPartsAssemblyInfo.cache
 /Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/staticwebassets/msbuild.backend.Microsoft.AspNetCore.StaticWebAssets.props
 /Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/staticwebassets/msbuild.build.backend.props
 /Users/kaue/Projects/estudo-csharp-angular/backend/obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.backend.props
