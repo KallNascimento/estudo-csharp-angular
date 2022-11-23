@@ -37,11 +37,19 @@ public class UserController : ControllerBase
     public IActionResult GetById(int id)
     {
         var User = _repo.GetUserById(id, true);
-        if (User == null) return BadRequest("O usuário não foi encontrado");
-
+        try
+        {
         var userDto = _mapper.Map<UserDto>(User);
-
         return Ok(User);
+            
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Erro:{ex.Message}");
+        
+        }
+
+
     }
 
 

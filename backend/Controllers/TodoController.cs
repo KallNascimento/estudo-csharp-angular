@@ -39,10 +39,8 @@ public class TodoController : ControllerBase
         var Todo = _repo.GetTodoById(id);
         try
         {
-            if (User == null)
-                return BadRequest("Tarefa não encontrada");
             var todoDto = _mapper.Map<TodoDto>(Todo);
-            return Ok(Todo);
+            return Ok(todoDto);
         }
         catch (Exception ex)
         {
@@ -58,9 +56,55 @@ public class TodoController : ControllerBase
         _repo.Add(todo);
         if (_repo.SaveChanges())
         {
-            return Created($"/api/todo/{model.id}", _mapper.Map<TodoDto>(todo));
+            return Created($"/api/todo/{model.Id}", _mapper.Map<TodoDto>(todo));
         }
 
         return BadRequest("Tarefa não cadastrada.");
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult Put(int id, TodoRegisterDto model)
+    {
+        var todo = _repo.GetTodoById(id);
+        if (todo == null)
+            return BadRequest("Tarefa não encontrada");
+
+        _mapper.Map(model, todo);
+        _repo.Update(todo);
+        
+        if (_repo.SaveChanges())
+        {
+            return Created($"/api/todo/{model.Id}", _mapper.Map<TodoDto>(todo));
+        }
+        return BadRequest("Tarefa não foi atualizada.");
+    }
+
+    [HttpPatch("{id}")]
+    public IActionResult Patch(int id, TodoRegisterDto model)
+    {
+        var todo = _repo.GetTodoById(id);
+        if (todo == null)
+            return BadRequest("Tarefa nãi encontrada.");
+        _mapper.Map(model, todo);
+        _repo.Update(todo);
+        if (_repo.SaveChanges())
+        {
+            return Created($"/api/todo/{model.Id}", _mapper.Map<TodoDto>(todo));
+        }
+        return BadRequest("Tarefa não foi atualizada.");
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var todo = _repo.GetTodoById(id);
+        if (todo == null)
+            return BadRequest("Tarefa inexistente.");
+        _repo.Delete(todo);
+        if (_repo.SaveChanges())
+        {
+            return Ok("Tarefa excluida com sucesso.");
+        }
+        return BadRequest("Não foi possivel excluir,");
     }
 }
