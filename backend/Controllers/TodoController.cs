@@ -56,7 +56,7 @@ public class TodoController : ControllerBase
         _repo.Add(todo);
         if (_repo.SaveChanges())
         {
-            return Created($"/api/todo/{model.id}", _mapper.Map<TodoDto>(todo));
+            return Created($"/api/todo/{model.Id}", _mapper.Map<TodoDto>(todo));
         }
 
         return BadRequest("Tarefa não cadastrada.");
@@ -72,7 +72,7 @@ public class TodoController : ControllerBase
         _mapper.Map(model, todo);
         if (_repo.SaveChanges())
         {
-            return Created($"/api/todo/{model.id}", _mapper.Map<TodoDto>(todo));
+            return Created($"/api/todo/{model.Id}", _mapper.Map<TodoDto>(todo));
         }
         return BadRequest("Tarefa não foi atualizada.");
     }
@@ -87,7 +87,7 @@ public class TodoController : ControllerBase
         _repo.Update(todo);
         if (_repo.SaveChanges())
         {
-            return Created($"/api/todo/{model.id}", _mapper.Map<TodoDto>(todo));
+            return Created($"/api/todo/{model.Id}", _mapper.Map<TodoDto>(todo));
         }
         return BadRequest("Tarefa não foi atualizada.");
     }
