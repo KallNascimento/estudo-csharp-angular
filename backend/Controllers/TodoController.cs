@@ -39,7 +39,6 @@ public class TodoController : ControllerBase
         var Todo = _repo.GetTodoById(id);
         try
         {
-            
             var todoDto = _mapper.Map<TodoDto>(Todo);
             return Ok(Todo);
         }
@@ -64,14 +63,46 @@ public class TodoController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public IActionResult Put(int id, TodoRegisterDto model){
+    public IActionResult Put(int id, TodoRegisterDto model)
+    {
         var todo = _repo.GetTodoById(id);
-        if(todo==null) return BadRequest("Tarefa não encontrada");
+        if (todo == null)
+            return BadRequest("Tarefa não encontrada");
 
         _mapper.Map(model, todo);
-        if(_repo.SaveChanges()){
-            return Created($"/api/todo/{model.id}",_mapper.Map<TodoDto>(todo));
+        if (_repo.SaveChanges())
+        {
+            return Created($"/api/todo/{model.id}", _mapper.Map<TodoDto>(todo));
         }
         return BadRequest("Tarefa não foi atualizada.");
+    }
+
+    [HttpPatch("{id}")]
+    public IActionResult Patch(int id, TodoRegisterDto model)
+    {
+        var todo = _repo.GetTodoById(id);
+        if (todo == null)
+            return BadRequest("Tarefa nãi encontrada.");
+        _mapper.Map(model, todo);
+        _repo.Update(todo);
+        if (_repo.SaveChanges())
+        {
+            return Created($"/api/todo/{model.id}", _mapper.Map<TodoDto>(todo));
+        }
+        return BadRequest("Tarefa não foi atualizada.");
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var todo = _repo.GetTodoById(id);
+        if (todo == null)
+            return BadRequest("Tarefa inexistente.");
+        _repo.Delete(todo);
+        if (_repo.SaveChanges())
+        {
+            return Ok("Tarefa excluida com sucesso.");
+        }
+        return BadRequest("Não foi possivel excluir,");
     }
 }
