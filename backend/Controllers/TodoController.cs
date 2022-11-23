@@ -40,7 +40,7 @@ public class TodoController : ControllerBase
         try
         {
             var todoDto = _mapper.Map<TodoDto>(Todo);
-            return Ok(Todo);
+            return Ok(todoDto);
         }
         catch (Exception ex)
         {
@@ -70,6 +70,8 @@ public class TodoController : ControllerBase
             return BadRequest("Tarefa não encontrada");
 
         _mapper.Map(model, todo);
+        _repo.Update(todo);
+        
         if (_repo.SaveChanges())
         {
             return Created($"/api/todo/{model.Id}", _mapper.Map<TodoDto>(todo));
