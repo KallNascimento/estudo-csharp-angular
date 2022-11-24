@@ -1,13 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { ToastrService } from 'ngx-toastr';
 import { catchError, map, Observable, Subject, take, takeUntil } from 'rxjs';
 import { Todo } from 'src/app/models/todo';
 import { User } from 'src/app/models/user'
 import { UserService } from 'src/app/services/user.service';
 import { Util } from 'src/app/util/utils';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+//import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-user-master',
@@ -24,8 +22,7 @@ export class UserMasterComponent implements OnInit, OnDestroy {
 
     private router: Router,
     private userService: UserService,
-    private toastr: ToastrService,
-    private spinner: NgxSpinnerService) { }
+  ) { }
 
   ngOnDestroy(): void {
 
@@ -47,7 +44,6 @@ export class UserMasterComponent implements OnInit, OnDestroy {
     this.users$ = this.userService.getAll()
       .pipe(
         catchError((error) => {
-          this.toastr.error('Usuários não carregados!');
           console.log(error);
           throw error;
         }),
