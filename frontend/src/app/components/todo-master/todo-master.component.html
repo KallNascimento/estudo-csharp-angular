@@ -41,13 +41,15 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Descrição</th>
-            <th scope="col">Usuário</th>
+            <!-- <th scope="col">Usuário</th> -->
         </tr>
 
     </thead>
     <tbody>
-        <tr>
-            bla bla bla
+        <tr *ngFor="let todo of todos$ | async">
+            <th scope="row">{{todo.id}}</th>
+            <td>{{todo.description}}</td>
+            <!-- <td>{{todo.userId}}</td> -->
         </tr>
     </tbody>
 </table>

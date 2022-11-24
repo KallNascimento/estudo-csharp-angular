@@ -5,6 +5,7 @@ import { Todo } from 'src/app/models/todo';
 import { User } from 'src/app/models/user'
 import { UserService } from 'src/app/services/user.service';
 import { Util } from 'src/app/util/utils';
+
 //import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
