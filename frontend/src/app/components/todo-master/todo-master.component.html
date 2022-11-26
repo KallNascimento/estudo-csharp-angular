@@ -1,55 +1,27 @@
-<!-- <ng-template #content let-modal>
-<div class="modal-header">
-    <h4 class="modal-title"> Formulário de Tarefas</h4>
-    <button class="btn-close" aria-label="Close" ></button>
-</div>
-    <form (ngSubmit)="submit()" [formGroup]="todoForm" #formDir="ngForm">
-        <div class="form-group">
-            <label for="description">Tarefa:</label>
-            <input type="text" name="" id="" placeholder="Digite a tarefa">
-        </div>
-    
-        <div class="form-group">
-            <label for="users">Escolhe o Usuário:</label>
-            <select name="users" id="users">Escolha</select>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-</ng-template> -->
+<mat-card>
+    <mat-toolbar>
+        <span>
+            Tarefas cadastradas       
+        </span> 
+        <span>
+            <button mat-icon-button matTooltip="Adicionar novo registro" (click)="openFormDialog()"> 
+                <mat-icon>add</mat-icon>
+            </button>
 
-<!-- <div class="modal-header">
-    <h4 class="modal-title"> Formulário de Tarefas</h4>
-    <button class="btn-close" aria-label="Close" ></button>
-</div> -->
-    <form (ngSubmit)="submit()" [formGroup]="todoForm" #formDir="ngForm">
-        <div class="form-group">
-            <label for="description">Tarefa:</label>
-            <input type="text" name="" id="" placeholder="Digite a tarefa">
-        </div>
-    
-        <div class="form-group">
-            <label for="users">Escolhe o Usuário:</label>
-            <select name="users" id="users">Escolha</select>
-            <option value=""></option>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
+        </span>
+    </mat-toolbar>
 
+    <table mat-table [dataSource] = "todos$" class="mat-elevation-z8">
+        <ng-container matColumnDef="#">
+            <th mat-header-cell *matHeaderCellDef>#</th>
+            <td mat-cell *matCellDef="let todo">{{todo.id}}</td>
+        </ng-container>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Descrição</th>
-            <!-- <th scope="col">Usuário</th> -->
-        </tr>
-
-    </thead>
-    <tbody>
-        <tr *ngFor="let todo of todos$ | async">
-            <th scope="row">{{todo.id}}</th>
-            <td>{{todo.description}}</td>
-            <!-- <td>{{todo.userId}}</td> -->
-        </tr>
-    </tbody>
-</table>
+        <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef>Descrição</th>
+            <td mat-cell *matCellDef="let todo">{{todo.description}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</mat-card>

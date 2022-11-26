@@ -8,10 +8,10 @@ import { Todo } from '../models/todo';
   providedIn: 'root'
 })
 export class TodoService {
-baseURL = `${environment.mainUrlAPI}todo`;
-  constructor(private http:HttpClient) { }
+  private readonly baseURL = `${environment.mainUrlAPI}todo`;
+  constructor(private http: HttpClient) { }
 
-  getAll():Observable<Todo[]>{
+  getAll(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.baseURL);
   }
 }

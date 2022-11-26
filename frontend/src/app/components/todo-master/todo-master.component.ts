@@ -1,40 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { TodoService } from 'src/app/services/todo.service';
 import { Todo } from 'src/app/models/todo';
 import { catchError, Observable, take } from 'rxjs';
-
+import { TodoFormComponent } from './todo-form/todo-form.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-todo-master',
   templateUrl: './todo-master.component.html',
   styleUrls: ['./todo-master.component.css']
 })
+
+
+
 export class TodoMasterComponent implements OnInit {
-  todoForm!: FormGroup
-  public todos$: Observable<Todo[]>;
+  displayedColumns: string[] = ['#', 'Description'];
+  todos$: Observable<Todo[]>;
 
   constructor(
     private todoService: TodoService,
-  ) { }
+    public dialog: MatDialog
+    ) {
+      this.todos$ =  this.todoService.getAll();
+    }
+    
+    
+    
+    ngOnInit(): void {
+      this.loadTodos();
 
-  ngOnInit(): void {
-
-    this.loadTodos();
   }
 
   private loadTodos() {
     this.todos$ = this.todoService.getAll()
-    .pipe(
-      catchError((error) => {
-      console.log(error);
-      throw error;
-    }),
-      take(1)
-    );
+      .pipe(
+        catchError((error) => {
+          console.log(error);
+          throw error;
+        }),
+        take(1)
+      );
   }
 
 
-  submit() {
-    console.log("Formulario enviado");
+  openFormDialog(): void {
+    const dialogRef = this.dialog.open(TodoFormComponent, { width: '400px' })
   }
 }
