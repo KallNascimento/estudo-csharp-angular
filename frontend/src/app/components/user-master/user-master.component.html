@@ -1,24 +1,27 @@
 <div>
-    <app-title [title]="title"></app-title>
-  
-    <table class="table table-hover">
-      <thead class="thead-light">
-        <tr>
-          <th> Visualizar</th>
-          <th scope="col">#</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Tarefas</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users$ | async">
-          <td>
-            <a [routerLink]="['/user/', user.id]">Detalhe</a>
-          </td>
-          <th scope="row">{{user.id}}</th>
-          <td>{{user.name}}</td>
-          <td>{{user.todos}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <app-title [title]="title"></app-title>
+
+  <table class="table mat-table">
+    <thead class="thead-dark">
+      <tr>
+
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <!-- <th scope="col">Tarefas</th> -->
+        <th> Visualizar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users$ | async">
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.name}}</td>
+        <!-- <td>{{user.todos}}</td> -->
+        <td>
+          <a [routerLink]="['/user/', user.id]">
+            <mat-icon fontIcon="search"></mat-icon>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

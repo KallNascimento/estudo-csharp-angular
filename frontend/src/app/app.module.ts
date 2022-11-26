@@ -3,45 +3,36 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { NgxSpinnerModule } from 'ngx-spinner';
-import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
-
+import { AppMaterialModule } from './shared/app-material/app-material.module';
 import { AppComponent } from './app.component';
 import { UserMasterComponent } from './components/user-master/user-master.component';
 import { TodoMasterComponent } from './components/todo-master/todo-master.component';
-// import { UserDetailsComponent } from './components/user-master/user-details/user-details.component';
+
 import { TitleComponent } from './components/shared/titulo/title.component';
 import { UserInterceptor } from './interceptors/user.interceptor';
 import { UserService } from './services/user.service';
+import { RouterModule } from '@angular/router';
+import { TodoFormComponent } from './components/todo-master/todo-form/todo-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserMasterComponent,
     TodoMasterComponent,
-    // UserDetailsComponent,
-    TitleComponent
+    TitleComponent,
+    TodoFormComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
-    NgxSpinnerModule,
-    PaginationModule.forRoot(),
-    ModalModule.forRoot(),
-    ToastrModule.forRoot({
-      timeOut: 3500,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-      progressBar: true,
-      closeButton: true
-    }),
     BrowserAnimationsModule,
+    AppMaterialModule
+  
 
   ],
   providers: [

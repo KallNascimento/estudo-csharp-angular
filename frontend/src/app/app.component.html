@@ -1,10 +1,15 @@
-<nav>
-  <a routerLink="user">Usuários</a>
-  <a routerLink="todo">Tarefas</a>
-  <a routerLink="logout">Sair</a>
-</nav>
-<section class="container">
+<mat-toolbar>
+  <span>Gerenciador de Tarefas</span>
+  <div style="margin-left: 10px;">
+    <button mat-button routerLink="user">
+      Usuários
+    </button>
+    <button mat-button routerLink="todo">
+      Tarefas
+    </button>
+  </div>
+</mat-toolbar>
 
+<section class="container">
   <router-outlet></router-outlet>
-  
 </section>
