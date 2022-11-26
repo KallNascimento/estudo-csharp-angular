@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { delay, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Todo } from '../models/todo';
 
@@ -12,6 +12,13 @@ export class TodoService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.baseURL);
+    return this.http.get<Todo[]>(this.baseURL).pipe(
+      //delay(5000),
+      tap(todos =>console.log(todos)));
+    
   }
+
+  // addTodo():Observable<Todo[]>{
+  //   return this.http.post<Todo[]>(this.baseURL);
+  // }
 }
