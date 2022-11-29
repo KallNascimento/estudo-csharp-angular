@@ -1,28 +1,39 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, Observable, take } from 'rxjs';
 
 import { User } from 'src/app/models/user'
+import { TodoService } from 'src/app/services/todo.service';
 import { UserService } from 'src/app/services/user.service';
+import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error-snack.component';
 @Component({
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html',
   styleUrls: ['./todo-form.component.css']
 })
 export class TodoFormComponent {
-  todoForm = new FormGroup({
-    description : new FormControl()
-   });
+  form: FormGroup;
 
-   public users$: Observable<User[]>; 
+  public users$: Observable<User[]>;
+  durationInSeconds: number = 5;
 
-   constructor(
+  constructor(
+    private formBuilder: FormBuilder,
     private userService: UserService,
-   ){}
-    ngOnInit():void{
-      this.loadUsers();
-    }
-
+    private todoService: TodoService,
+    private _snackBar: MatSnackBar,
+  ) {
+    this.form =
+      this.formBuilder.group({
+        id:Number,
+        description: [null],
+        userid: [null]
+      })
+  }
+  ngOnInit(): void {
+    this.loadUsers();
+  }
 
   private loadUsers() {
     this.users$ = this.userService.getAll()
@@ -35,10 +46,25 @@ export class TodoFormComponent {
       );
   }
 
-  submit(){
-    console.log("Clicou");
+  onSubmit() {
+    //console.log(this.form.value);
+
+    this.todoService.save(this.form.value)
+      .subscribe(result => this.onSuccess('Dados salvos com sucesso!'), error =>
+        this.onError('Erro ao salvar a tarefa.'));
   }
 
+  private onError(errorMsg: string) {
+    this._snackBar.openFromComponent(ErrorSnackComponent, {
+      duration: this.durationInSeconds * 1000,
+      data: errorMsg,
+    });
+  }
 
-
+  private onSuccess(errorMsg: string) {
+    this._snackBar.openFromComponent(ErrorSnackComponent, {
+      duration: this.durationInSeconds * 1000,
+      data: errorMsg,
+    });
+  }
 }

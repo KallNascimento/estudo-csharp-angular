@@ -4,16 +4,16 @@
         <name>backend</name>
     </assembly>
     <members>
-        <member name="T:backend.Migrations.pgsql">
+        <member name="T:backend.Migrations.initials">
             <inheritdoc />
         </member>
-        <member name="M:backend.Migrations.pgsql.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:backend.Migrations.initials.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:backend.Migrations.pgsql.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:backend.Migrations.initials.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:backend.Migrations.pgsql.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:backend.Migrations.initials.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

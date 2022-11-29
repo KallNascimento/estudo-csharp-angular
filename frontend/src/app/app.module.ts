@@ -14,6 +14,7 @@ import { UserInterceptor } from './interceptors/user.interceptor';
 import { UserService } from './services/user.service';
 import { RouterModule } from '@angular/router';
 import { TodoFormComponent } from './components/todo-master/todo-form/todo-form.component';
+import { TodoTableComponent } from './components/todo-master/todo-table/todo-table.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TodoFormComponent } from './components/todo-master/todo-form/todo-form.
     UserMasterComponent,
     TodoMasterComponent,
     TitleComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    TodoTableComponent
   ],
   imports: [
     BrowserModule,

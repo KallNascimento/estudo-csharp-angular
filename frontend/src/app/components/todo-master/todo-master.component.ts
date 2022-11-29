@@ -4,42 +4,36 @@ import { Todo } from 'src/app/models/todo';
 import { catchError, Observable, take } from 'rxjs';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TodoTableComponent } from './todo-table/todo-table.component';
 @Component({
   selector: 'app-todo-master',
   templateUrl: './todo-master.component.html',
   styleUrls: ['./todo-master.component.css']
 })
 
-
-
 export class TodoMasterComponent implements OnInit {
-  displayedColumns: string[] = ['#', 'Description'];
-  todos$: Observable<Todo[]>;
+ 
 
   constructor(
-    private todoService: TodoService,
+
     public dialog: MatDialog
     ) {
-      this.todos$ =  this.todoService.getAll();
-    }
-    
-    
-    
+      // this.todos$ =  this.todoService.getAll();
+    }   
     ngOnInit(): void {
-      this.loadTodos();
-
+      // this.loadTodos();
   }
 
-  private loadTodos() {
-    this.todos$ = this.todoService.getAll()
-      .pipe(
-        catchError((error) => {
-          console.log(error);
-          throw error;
-        }),
-        take(1)
-      );
-  }
+  // private loadTodos() {
+  //   this.todos$ = this.todoService.getAll()
+  //     .pipe(
+  //       catchError((error) => {
+  //         console.log(error);
+  //         throw error;
+  //       }),
+  //       take(1)
+  //     );
+  // }
 
 
   openFormDialog(): void {

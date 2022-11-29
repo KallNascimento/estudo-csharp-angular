@@ -1,27 +1,13 @@
 <mat-card>
     <mat-toolbar>
         <span>
-            Tarefas cadastradas       
-        </span> 
+            Tarefas cadastradas
+        </span>
         <span>
-            <button mat-icon-button matTooltip="Adicionar novo registro" (click)="openFormDialog()"> 
+            <button mat-icon-button matTooltip="Adicionar novo registro" (click)="openFormDialog()">
                 <mat-icon>add</mat-icon>
             </button>
-
         </span>
-    </mat-toolbar>
-
-    <table mat-table [dataSource] = "todos$" class="mat-elevation-z8">
-        <ng-container matColumnDef="#">
-            <th mat-header-cell *matHeaderCellDef>#</th>
-            <td mat-cell *matCellDef="let todo">{{todo.id}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Description">
-            <th mat-header-cell *matHeaderCellDef>Descrição</th>
-            <td mat-cell *matCellDef="let todo">{{todo.description}}</td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    </mat-toolbar>    
+        <app-todo-table></app-todo-table>
 </mat-card>
