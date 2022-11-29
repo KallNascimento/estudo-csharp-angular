@@ -1,27 +1,13 @@
-<div>
-  <app-title [title]="title"></app-title>
-
-  <table class="table mat-table">
-    <thead class="thead-dark">
-      <tr>
-
-        <th scope="col">#</th>
-        <th scope="col">Nome</th>
-        <!-- <th scope="col">Tarefas</th> -->
-        <th> Visualizar</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users$ | async">
-        <th scope="row">{{user.id}}</th>
-        <td>{{user.name}}</td>
-        <!-- <td>{{user.todos}}</td> -->
-        <td>
-          <a [routerLink]="['/user/', user.id]">
-            <mat-icon fontIcon="search"></mat-icon>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<mat-card>
+  <mat-toolbar>
+      <span>
+          Usuários Cadastrados
+      </span>
+      <span>
+          <button mat-icon-button matTooltip="Adicionar novo registro" (click)="openFormDialog()">
+              <mat-icon>add</mat-icon>
+          </button>
+      </span>
+  </mat-toolbar>    
+      <app-users-table></app-users-table>
+</mat-card>
