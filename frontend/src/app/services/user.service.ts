@@ -8,12 +8,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-
-  baseURL = `${environment.mainUrlAPI}user`;
-
   public isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
+  private readonly baseURL = `${environment.mainUrlAPI}user`;
 
   constructor(private http: HttpClient) { }
 
@@ -25,12 +23,12 @@ export class UserService {
     return this.http.get<User>(`${this.baseURL}/${id}`);
   }
 
-  post(user: User) {
-    return this.http.post(this.baseURL, User);
+  save(record: User):Observable<User> {
+    return this.http.post<User>(this.baseURL, record);
   }
 
-  put(user: User) {
-    return this.http.put(`${this.baseURL}/${user.id}`, User);
+  put(record: User):Observable<User> {
+    return this.http.put<User>(`${this.baseURL}/${record.id}`, record);
   }
 
   delete(id: number) {
