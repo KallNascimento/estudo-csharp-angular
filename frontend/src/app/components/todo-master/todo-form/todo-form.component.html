@@ -2,7 +2,7 @@
     <mat-toolbar style="border-radius: 10px 10px 0 0;">Cadastro de Tarefas</mat-toolbar>
     <form (ngSubmit)="onSubmit()" [formGroup]="form" #formDir="ngForm" class="form-group-flex">
         
-            <input type="hidden" value="">
+            <input type="hidden" formControlName="id" value="">
         
         <mat-form-field appearance="fill">
             <mat-label for="description">Tarefa</mat-label>
