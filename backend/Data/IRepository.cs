@@ -14,6 +14,6 @@ public interface IRepository
     User[] GetAllUsers(bool includeTodos = false);
     User GetUserById(int userId, bool includeTodos = false);
     Todo[] GetAllTodos();
-     Todo GetTodoById(int todoId);
+    Todo GetTodoById(int todoId);
 }
 

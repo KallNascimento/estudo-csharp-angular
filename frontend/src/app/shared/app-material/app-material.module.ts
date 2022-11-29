@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
   exports: [
@@ -26,6 +27,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
     MatDialogModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
   ],
 })
 export class AppMaterialModule { }

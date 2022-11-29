@@ -1,26 +1,26 @@
 <mat-card style="border-radius:10px">
     <mat-toolbar style="border-radius: 10px 10px 0 0;">Cadastro de Tarefas</mat-toolbar>
-    <form (ngSubmit)="submit()" [formGroup]="todoForm" #formDir="ngForm" class="form-group-flex">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" #formDir="ngForm" class="form-group-flex">
+        
+            <input type="hidden" value="">
+        
         <mat-form-field appearance="fill">
             <mat-label for="description">Tarefa</mat-label>
-            <input matInput type="text" formControlName="description" id="" placeholder="Digite a tarefa"
-            matTooltip="Use este campo para descrevar a tarefa."
-            >
+            <input matInput type="text" formControlName="description" id=""
+                matTooltip="Use este campo para descrevar a tarefa.">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label for="users">Escolha o Usuário</mat-label>
-            <mat-select name="users" id="users">
+            <mat-select name="users" formControlName="userid"  id="users">
+                <mat-option value="null"></mat-option>
                 <mat-option *ngFor="let user of users$ | async" value={{user.id}}>{{user.name}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-
-       <div class="buttons">
-           <button mat-flat-button color="primary"
-           matTooltip="Envia as informações do formulário."
-           >Enviar</button>
-           <button mat-flat-button color="warn" disabled="true" >Excluir</button>
-       </div>
+        <mat-card-actions class="buttons">
+            <button mat-flat-button color="primary" matTooltip="Envia as informações do formulário.">Enviar</button>
+            <button mat-flat-button color="warn" disabled="true">Excluir</button>
+        </mat-card-actions>
     </form>
 </mat-card>

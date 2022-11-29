@@ -1,8 +1,8 @@
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend.Data
-{
+namespace backend.Data;
+
     public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
@@ -16,21 +16,22 @@ namespace backend.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             /*Quando roda o migrations ele acessa aqui*/
-            builder
-                .Entity<Todo>()
-                .HasData(
-                    new List<Todo>
-                    {
-                        new Todo(1, "Saiu para entrega",1),
-                        new Todo(2, "Entrega realizada",1),
-                        new Todo(3, "Comprou o carro",2),
-                        new Todo(4, "Lavou o carro",2),
-                    }
-                );
+        //     builder
+        //         .Entity<Todo>()
+        //         .HasData(
+        //             new List<Todo>
+        //             {
+        //                 new Todo(1, "Saiu para entrega",1),
+        //                 new Todo(2, "Entrega realizada",1),
+        //                 new Todo(3, "Comprou o carro",2),
+        //                 new Todo(4, "Lavou o carro",2),
+        //             }
+        //         );
 
-            builder
-                .Entity<User>()
-                .HasData(new List<User>() { new User(1, "João"), new User(2, "Maria"), });
-        }
+        //     builder
+        //         .Entity<User>()
+        //         .HasData(new List<User>() { new User(1, "João"), new User(2, "Maria"), });
+        // }
     }
-}
+    }
+

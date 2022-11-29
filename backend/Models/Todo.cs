@@ -2,6 +2,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models;
 
+//MODEL TODOS
+
 [Table("Todos")]
 public class Todo
 {
