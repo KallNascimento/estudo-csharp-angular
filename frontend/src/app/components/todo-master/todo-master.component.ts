@@ -7,7 +7,7 @@ import { catchError, Observable, of } from 'rxjs';
 import { Todo } from 'src/app/interfaces/todo.type';
 import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error-snack.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-todo-master',
@@ -41,11 +41,11 @@ export class TodoMasterComponent implements OnInit {
   }
 
   onAdd() {
-    this.router.navigate(['new-todo'], { relativeTo: this.route });
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
 
   onEdit(todo: Todo) {
-    this.router.navigate(['edit-todo', todo.id], { relativeTo: this.route });
+    this.router.navigate(['edit', todo.id], { relativeTo: this.route });
   }
 
   onRemove(todo: Todo) {
@@ -69,9 +69,6 @@ export class TodoMasterComponent implements OnInit {
       }
     });
   }
-
-
-
   openFormDialog(): void {
     this.dialog.open(TodoFormComponent, { width: '400px' })
   }
