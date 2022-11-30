@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoFormComponent } from './todo-form/todo-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TodoService } from 'src/app/services/todo.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -57,7 +56,6 @@ export class TodoMasterComponent implements OnInit {
       if (result) {
         this.todoService.delete(todo.id).subscribe(
           () => {
-
             this._snackBar.open('Registro removido com sucesso!', 'X', {
               duration: 5000,
               verticalPosition: 'top',
@@ -69,9 +67,6 @@ export class TodoMasterComponent implements OnInit {
         );
       }
     });
-  }
-  openFormDialog(): void {
-    this.dialog.open(TodoFormComponent, { width: '400px' })
   }
   onError(errorMsg: string) {
     this._snackBar.openFromComponent(ErrorSnackComponent, {

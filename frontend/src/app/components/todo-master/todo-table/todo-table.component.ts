@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Todo } from 'src/app/interfaces/todo.type';
-import { TodoFormComponent } from '../todo-form/todo-form.component';
 
+import { Todo } from 'src/app/interfaces/todo.type';
 
 @Component({
   selector: 'app-todo-table',
@@ -19,26 +17,11 @@ export class TodoTableComponent {
   readonly displayedColumns: string[] = ['#', 'Description', 'Actions'];
 
   constructor(
-    private dialog: MatDialog,
   ) {
   }
 
-  openDialog(todo: Todo | null): void {
-    const dialogRef = this.dialog.open(TodoFormComponent, {
-      width: '400px',
-      data: todo != null ?
-        todo : {
-          id: '',
-          description: '',
-          userid: '',
-        }
-    });
-    console.log(todo);
-
-  }
-
   ngOnInit(): void {
-    
+
   }
 
   onAdd() {
