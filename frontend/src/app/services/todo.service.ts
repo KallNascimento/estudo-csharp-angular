@@ -31,7 +31,6 @@ export class TodoService {
 
   private create(record: Partial<Todo>): Observable<Todo> {
     return this.http.post<Todo>(this.baseURL, record);
-
   }
 
   private update(record: Partial<Todo>): Observable<Todo> {

@@ -10,8 +10,8 @@ import { UsersGuard } from './guards/users.guard';
 const routes: Routes = [
   { path: "user", component: UserMasterComponent },
   { path: "todo", component: TodoMasterComponent },
-  { path: 'new-todo', component: TodoFormComponent, resolve: { todo: TodoGuard } },
-  { path: 'edit-todo/:id', component: TodoFormComponent, resolve: { todo: TodoGuard } },
+  { path: 'new', component: TodoFormComponent, resolve: { todo: TodoGuard } },
+  { path: 'edit/:id', component: TodoFormComponent, resolve: { todo: TodoGuard } },
   { path: 'new-user', component: UsersFormComponent, resolve: { user: UsersGuard } },
   { path: 'edit-user/:id', component: UsersFormComponent, resolve: { user: UsersGuard } },
   { path: "", pathMatch: 'full', redirectTo: "user" }

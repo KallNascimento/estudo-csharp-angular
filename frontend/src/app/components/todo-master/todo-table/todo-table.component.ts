@@ -1,10 +1,6 @@
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
 import { Todo } from 'src/app/interfaces/todo.type';
-import { TodoService } from 'src/app/services/todo.service';
-
 import { TodoFormComponent } from '../todo-form/todo-form.component';
 
 
@@ -15,19 +11,14 @@ import { TodoFormComponent } from '../todo-form/todo-form.component';
 })
 export class TodoTableComponent {
 
-  @Input() todos:Todo[]=[];
+  @Input() todos: Todo[] = [];
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
 
-
-
-  
   readonly displayedColumns: string[] = ['#', 'Description', 'Actions'];
 
   constructor(
-    private todoService: TodoService,
-    private _snackBar: MatSnackBar,
     private dialog: MatDialog,
   ) {
   }
@@ -46,23 +37,9 @@ export class TodoTableComponent {
 
   }
 
-  // onEdit(todo: Todo) {
-  //   console.log(
-  //     this.todoService.update(todo)
-  //   );
-
-  //   //this.openDialog(todo);
-  // }
-
-  // onDelete(id: number) {
-  //   this.todoService.getById(id)
-  // }
-
-
   ngOnInit(): void {
     // this.loadTodos();
   }
-
 
   onAdd() {
     this.add.emit(true);
