@@ -42,6 +42,8 @@ export class UserMasterComponent implements OnInit, OnDestroy {
 
   onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
+
+    
   }
 
   onEdit(user: User) {

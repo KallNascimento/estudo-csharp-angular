@@ -40,6 +40,7 @@ export class TodoMasterComponent implements OnInit {
 
   onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
+    console.log("Clique");
   }
 
   onEdit(todo: Todo) {

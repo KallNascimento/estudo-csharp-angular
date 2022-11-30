@@ -54,6 +54,7 @@ export class UsersFormComponent {
     this.userService.save(this.form.value)
       .subscribe(result => this.onSuccess('Dados salvos com sucesso!'), error =>
         this.onError('Erro ao salvar a usuário.'));
+        this.onCancel();
   }
 
   private onError(errorMsg: string) {
