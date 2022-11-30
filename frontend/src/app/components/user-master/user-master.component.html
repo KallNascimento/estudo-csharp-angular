@@ -1,13 +1,17 @@
-<mat-card>
-  <mat-toolbar>
-      <span>
-          Usuários Cadastrados
-      </span>
-      <span>
-          <button mat-icon-button matTooltip="Adicionar novo registro" (click)="openFormDialog()">
-              <mat-icon>add</mat-icon>
-          </button>
-      </span>
-  </mat-toolbar>    
-      <app-users-table></app-users-table>
-</mat-card>
+<section class="flex-container">
+    <mat-card style="width:750px ;">
+        <mat-toolbar class="header">
+            <span>
+                Usuários Cadastrados
+            </span>
+            <span>
+                <button mat-icon-button matTooltip="Adicionar novo registro" (click)="openFormDialog()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </span>
+        </mat-toolbar>    
+    </mat-card>
+    <mat-card style="width:750px ;">
+        <app-users-table></app-users-table>
+    </mat-card>
+</section>

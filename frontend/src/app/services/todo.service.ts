@@ -11,14 +11,35 @@ export class TodoService {
   private readonly baseURL = `${environment.mainUrlAPI}todo`;
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Todo[]> {
+  list(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.baseURL).pipe(
       //delay(5000), //Para testar o spinner
-      tap(todos => console.log(todos)));
-
+      //tap(todos => console.log(todos))
+    );
+  }
+  listById(id: number): Observable<Todo> {
+    return this.http.get<Todo>(`${this.baseURL}/${id}`);
   }
 
-  save(record: Todo): Observable<Todo> {
+  save(record: Partial<Todo>): Observable<Todo> {
+    if (record.id) {
+      // console.log('update');
+      return this.update(record);
+    }
+    return this.create(record);
+  }
+
+  private create(record: Partial<Todo>): Observable<Todo> {
     return this.http.post<Todo>(this.baseURL, record);
+
   }
+
+  private update(record: Partial<Todo>): Observable<Todo> {
+    return this.http.put<Todo>(`${this.baseURL}/${record.id}`, record);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${this.baseURL}/${id}`);
+  }
+
 }

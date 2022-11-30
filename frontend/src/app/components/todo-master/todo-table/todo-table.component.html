@@ -1,23 +1,26 @@
-<section *ngIf="todos$|async as todos; else loading">
+<table mat-table [dataSource]="todos" class="mat-elevation-z8">
+    <ng-container matColumnDef="#">
+        <th mat-header-cell *matHeaderCellDef>#</th>
+        <td mat-cell *matCellDef="let todo">{{todo.id}}</td>
+    </ng-container>
 
-    <table mat-table [dataSource]="todos" class="mat-elevation-z8">
-        <ng-container matColumnDef="#">
-            <th mat-header-cell *matHeaderCellDef>#</th>
-            <td mat-cell *matCellDef="let todo">{{todo.id}}</td>
-        </ng-container>
+    <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef>Descrição</th>
+        <td mat-cell *matCellDef="let todo">{{todo.description}}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="Description">
-            <th mat-header-cell *matHeaderCellDef>Descrição</th>
-            <td mat-cell *matCellDef="let todo">{{todo.description}}</td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <ng-container matColumnDef="Actions">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let todo">
+            <button mat-icon-button (click)="onEdit(todo)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onDelete(todo)" color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
 
-</section>
-
-<ng-template #loading>
-    <div class="loadingSpinner">
-        <mat-spinner></mat-spinner>
-    </div>
-</ng-template>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

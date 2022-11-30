@@ -1,13 +1,28 @@
-<mat-card>
-    <mat-toolbar>
-        <span>
-            Tarefas cadastradas
-        </span>
-        <span>
-            <button mat-icon-button matTooltip="Adicionar novo registro" (click)="openFormDialog()">
-                <mat-icon>add</mat-icon>
-            </button>
-        </span>
-    </mat-toolbar>    
-        <app-todo-table></app-todo-table>
-</mat-card>
+<section class="flex-container">
+    <mat-card style="width:750px ;">
+        <mat-toolbar class="header">
+            <h1>
+                Tarefas cadastradas
+            </h1>
+            <span>
+                <button mat-icon-button matTooltip="Adicionar novo registro" (click)="openFormDialog()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </span>
+        </mat-toolbar>
+    </mat-card>
+    <mat-card style="width:750px ;">
+        <app-todo-table 
+        *ngIf="todos$|async as todos; else loading" 
+        [todos]="todos" 
+        (add)="onAdd()"
+        (edit)="onEdit($event)" 
+        (remove)="onRemove($event)">
+    </app-todo-table>
+    </mat-card>
+    <ng-template #loading>
+        <div class="loadingSpinner">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-template>
+</section>

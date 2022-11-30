@@ -27,11 +27,11 @@ export class UserService {
     return this.http.post<User>(this.baseURL, record);
   }
 
-  put(record: User):Observable<User> {
+  update(record: User):Observable<User> {
     return this.http.put<User>(`${this.baseURL}/${record.id}`, record);
   }
 
-  delete(id: number) {
+  delete(id:number) {
     return this.http.delete(`${this.baseURL}/${id}`);
   }
 
