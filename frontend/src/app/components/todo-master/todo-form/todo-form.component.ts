@@ -8,9 +8,9 @@ import { Todo } from 'src/app/interfaces/todo.type';
 
 import { User } from 'src/app/models/user'
 import { TodoService } from 'src/app/services/todo.service';
-import { UserService } from 'src/app/services/user.service';
 import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error-snack.component';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-todo-form',
   templateUrl: './todo-form.component.html',
@@ -27,22 +27,19 @@ export class TodoFormComponent {
   })
 
   public users$: Observable<User[]>;
-  durationInSeconds: number = 5;
   constructor(
     private formBuilder: NonNullableFormBuilder,
-    private userService: UserService,
     private todoService: TodoService,
+    private userService: UserService,
     private _snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private location: Location,
     public dialog: MatDialog,
-    //public dialogRef: MatDialogRef<TodoFormComponent>,
-    // @Inject(MAT_DIALOG_DATA) public todo: Todo,
   ) { }
-
 
   ngOnInit(): void {
     const todo: Todo = this.route.snapshot.data['todo'];
+    this.loadSelectData();
     this.form.setValue({
       id: todo.id,
       description: todo.description,
@@ -50,37 +47,40 @@ export class TodoFormComponent {
     });
   }
 
-onCancel() {
-  this.location.back()
-}
-  private loadUsers() {
-  this.users$ = this.userService.getAll()
-    .pipe(
-      catchError((error) => {
-        console.log(error);
-        throw error;
-      }),
-      take(1)
-    );
-}
-
-onSubmit() {
-  this.todoService.save(this.form.value)
-    .subscribe(result => this.onSuccess('Dados salvos com sucesso!'), error =>
-      this.onError('Erro ao salvar a tarefa.'));
-}
+  onCancel() {
+    this.location.back()
+  }
+  onSubmit() {
+    this.todoService.save(this.form.value)
+      .subscribe(result => this.onSuccess('Dados salvos com sucesso!')
+        , error =>
+          this.onError('Erro ao salvar a tarefa.'));
+    this.onCancel();
+  }
 
   private onError(errorMsg: string) {
-  this._snackBar.openFromComponent(ErrorSnackComponent, {
-    duration: this.durationInSeconds * 1000,
-    data: errorMsg,
-  });
-}
+    this._snackBar.openFromComponent(ErrorSnackComponent, {
+      duration: 5000,
+      data: errorMsg,
+    });
+  }
 
   private onSuccess(errorMsg: string) {
-  this._snackBar.openFromComponent(ErrorSnackComponent, {
-    duration: this.durationInSeconds * 1000,
-    data: errorMsg,
-  });
-}
+    this._snackBar.openFromComponent(ErrorSnackComponent, {
+      duration: 5000,
+      data: errorMsg,
+    });
+  }
+  loadSelectData() {
+    this.users$ = this.userService.list()
+      .pipe(
+        catchError((error) => {
+          console.log(error);
+          throw error;
+        }),
+        take(1)
+      );
+
+  }
+
 }

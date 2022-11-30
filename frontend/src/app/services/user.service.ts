@@ -12,28 +12,33 @@ export class UserService {
     false
   );
   private readonly baseURL = `${environment.mainUrlAPI}user`;
-
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseURL);
+  list(): Observable<User[]> {
+    return this.http.get<User[]>(this.baseURL).pipe(
+    );
   }
-
-  getById(id: number): Observable<User> {
+  listById(id: number): Observable<User> {
     return this.http.get<User>(`${this.baseURL}/${id}`);
   }
 
-  save(record: User):Observable<User> {
+  save(record: Partial<User>): Observable<User> {
+    if (record.id) {
+      return this.update(record);
+    }
+    return this.create(record);
+  }
+
+  private create(record: Partial<User>): Observable<User> {
     return this.http.post<User>(this.baseURL, record);
   }
 
-  update(record: User):Observable<User> {
+  private update(record: Partial<User>): Observable<User> {
     return this.http.put<User>(`${this.baseURL}/${record.id}`, record);
   }
 
-  delete(id:number) {
+  delete(id: number) {
     return this.http.delete(`${this.baseURL}/${id}`);
   }
-
 
 }

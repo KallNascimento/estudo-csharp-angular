@@ -1,17 +1,19 @@
 <mat-card style="border-radius:10px">
     <mat-toolbar style="border-radius: 10px 10px 0 0;">Cadastro de Usuários</mat-toolbar>
-    <form (ngSubmit)="onSubmit()" [formGroup]="form" #formDir="ngForm" class="form-group-flex">
+    <form [formGroup]="form" #formDir="ngForm" class="form-group-flex">
 
         <input type="hidden" formControlName="id" value="">
 
-        <mat-form-field appearance="fill">
-            <mat-label for="name">Nome</mat-label>
-            <input matInput type="text" formControlName="name" id="" matTooltip="Entre com o nome do usuário.">
+        <mat-form-field>
+            <mat-label for="description">Nome</mat-label>
+            <input matInput type="text" formControlName="name" id=""
+                matTooltip="Entre com os dados do usuário.">
         </mat-form-field>
 
         <mat-card-actions class="buttons">
-            <button mat-flat-button color="primary" matTooltip="Envia as informações do formulário.">Enviar</button>
-            <button mat-flat-button color="warn" disabled="true">Excluir</button>
+            <button mat-flat-button color="primary" (click)="onSubmit()"
+                matTooltip="Envia as informações do formulário.">Enviar</button>
+            <button mat-flat-button color="warn" (click)="onCancel()">Cancelar</button>
         </mat-card-actions>
     </form>
 </mat-card>
