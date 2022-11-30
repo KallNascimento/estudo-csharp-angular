@@ -16,7 +16,6 @@ import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmat
 
 export class TodoMasterComponent implements OnInit {
   todos$: Observable<Todo[]> | null = null;
-  snackbarTimer = 5;
   constructor(
     public dialog: MatDialog,
     private todoService: TodoService,
@@ -70,7 +69,7 @@ export class TodoMasterComponent implements OnInit {
   }
   onError(errorMsg: string) {
     this._snackBar.openFromComponent(ErrorSnackComponent, {
-      duration: this.snackbarTimer * 1000,
+      duration: 5000,
       data: errorMsg,
     });
   }

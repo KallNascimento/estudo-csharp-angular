@@ -12,7 +12,7 @@ export class UsersGuard implements Resolve<User> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> {
     if (route.params && route.params['id']) {
-      return this.service.getById(route.params['id']);
+      return this.service.listById(route.params['id']);
     }
     return of({ id: 0, name: '' });
   }

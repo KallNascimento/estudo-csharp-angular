@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
 import { Todo } from 'src/app/interfaces/todo.type';
 
 @Component({
@@ -16,9 +15,7 @@ export class TodoTableComponent {
 
   readonly displayedColumns: string[] = ['#', 'Description', 'Actions'];
 
-  constructor(
-  ) {
-  }
+  constructor() { }
 
   ngOnInit(): void {
 

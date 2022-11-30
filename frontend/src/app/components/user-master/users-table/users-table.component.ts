@@ -1,10 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError, Observable, of, retry, take } from 'rxjs';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from 'src/app/interfaces/user.type';
-import { UserService } from 'src/app/services/user.service';
-import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error-snack.component';
-
 
 @Component({
   selector: 'app-users-table',
@@ -12,39 +7,27 @@ import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error
   styleUrls: ['./users-table.component.css']
 })
 export class UsersTableComponent {
+
+  @Input() users: User[] = [];
+  @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
 
-  snackbarTimer = 5;
-  displayedColumns: string[] = ['#', 'Name', 'Actions'];
-  users$: Observable<User[]>;
-
-  constructor(
-    private userService: UserService,
-    private _snackBar: MatSnackBar
-  ) {
-    this.users$ = this.userService.getAll()
-      .pipe(
-        catchError((error) => {
-          this.onError('Oops! Não consegui carregar os dados.')
-          return of([])
-        })
-      );
+  readonly displayedColumns: string[] = ['#', 'Name', 'Actions'];
+  constructor() { }
+  
+  ngOnInit(): void {
   }
-  onError(errorMsg: string) {
-    this._snackBar.openFromComponent(ErrorSnackComponent, {
-      duration: this.snackbarTimer * 1000,
-      data: errorMsg,
-    });
+  onAdd() {
+    this.add.emit(true);
   }
 
   onEdit(user: User) {
     this.edit.emit(user);
   }
 
-  onDelete(id: number) {
-    this.userService.delete(id);
+  onDelete(user: User) {
+    this.remove.emit(user);
   }
-  ngOnInit(): void {
-  }
+
 }

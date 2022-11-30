@@ -1,17 +1,23 @@
 <section class="flex-container">
     <mat-card style="width:750px ;">
         <mat-toolbar class="header">
-            <span>
-                Usuários Cadastrados
-            </span>
-            <span>
-                <button mat-icon-button matTooltip="Adicionar novo registro" (click)="openFormDialog()">
-                    <mat-icon>add</mat-icon>
-                </button>
-            </span>
-        </mat-toolbar>    
+            <h1>
+                Usuários cadastradas
+            </h1>
+        </mat-toolbar>
     </mat-card>
     <mat-card style="width:750px ;">
-        <app-users-table></app-users-table>
+        <app-users-table 
+        *ngIf="users$|async as users; else loading" 
+        [users]="users" 
+        (add)="onAdd()"
+        (edit)="onEdit($event)" 
+        (remove)="onRemove($event)">
+    </app-users-table>
     </mat-card>
+    <ng-template #loading>
+        <div class="loadingSpinner">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-template>
 </section>
