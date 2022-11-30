@@ -31,20 +31,8 @@ export class UsersFormComponent {
       })
   }
   ngOnInit(): void {
-    this.loadUsers();
+    // this.loadUsers();
   }
-
-  private loadUsers() {
-    this.users$ = this.userService.getAll()
-      .pipe(
-        catchError((error) => {
-          console.log(error);
-          throw error;
-        }),
-        take(1)
-      );
-  }
-
   onSubmit() {
     //console.log(this.form.value);
     this.userService.save(this.form.value)

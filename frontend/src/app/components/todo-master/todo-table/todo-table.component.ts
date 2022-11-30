@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError, Observable, of, take } from 'rxjs';
-import { Todo } from 'src/app/models/todo';
+import { Observable } from 'rxjs';
+import { Todo } from 'src/app/interfaces/todo.type';
 import { TodoService } from 'src/app/services/todo.service';
-import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error-snack.component';
+
+import { TodoFormComponent } from '../todo-form/todo-form.component';
 
 
 @Component({
@@ -12,41 +14,65 @@ import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error
   styleUrls: ['./todo-table.component.css']
 })
 export class TodoTableComponent {
-  durationInSeconds = 5; //Snackbar timer
 
-  displayedColumns: string[] = ['#', 'Description'];
-  todos$: Observable<Todo[]>;
+  @Input() todos:Todo[]=[];
+  @Output() add = new EventEmitter(false);
+  @Output() edit = new EventEmitter(false);
+  @Output() remove = new EventEmitter(false);
+
+
+
+  
+  readonly displayedColumns: string[] = ['#', 'Description', 'Actions'];
 
   constructor(
     private todoService: TodoService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private dialog: MatDialog,
   ) {
-    this.todos$ = this.todoService.getAll()
-      .pipe(
-        catchError((error) => {
-          this.onError('Oops! Não consegui carregar os dados.')
-          return of([])
-        })
-      );
   }
-  onError(errorMsg: string) {
-    this._snackBar.openFromComponent(ErrorSnackComponent, {
-      duration: this.durationInSeconds * 1000,
-      data: errorMsg,
+
+  openDialog(todo: Todo | null): void {
+    const dialogRef = this.dialog.open(TodoFormComponent, {
+      width: '400px',
+      data: todo != null ?
+        todo : {
+          id: '',
+          description: '',
+          userid: '',
+        }
     });
+    console.log(todo);
+
   }
+
+  // onEdit(todo: Todo) {
+  //   console.log(
+  //     this.todoService.update(todo)
+  //   );
+
+  //   //this.openDialog(todo);
+  // }
+
+  // onDelete(id: number) {
+  //   this.todoService.getById(id)
+  // }
+
+
   ngOnInit(): void {
     // this.loadTodos();
   }
 
-  // private loadTodos() {
-  //   this.todos$ = this.todoService.getAll()
-  //     .pipe(
-  //       catchError((error) => {
-  //         console.log(error);
-  //         throw error;
-  //       }),
-  //       take(1)
-  //     );
-  // }
+
+  onAdd() {
+    this.add.emit(true);
+  }
+
+  onEdit(todo: Todo) {
+    this.edit.emit(todo);
+  }
+
+  onDelete(todo: Todo) {
+    this.remove.emit(todo);
+  }
 }

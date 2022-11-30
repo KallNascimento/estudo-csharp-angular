@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError, Observable, of, take } from 'rxjs';
+import { catchError, Observable, of, retry, take } from 'rxjs';
 import { User } from 'src/app/interfaces/user.type';
 import { UserService } from 'src/app/services/user.service';
 import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error-snack.component';
@@ -12,9 +12,13 @@ import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error
   styleUrls: ['./users-table.component.css']
 })
 export class UsersTableComponent {
-  durationInSeconds = 5; //Snackbar timer
+  @Output() edit = new EventEmitter(false);
+  @Output() remove = new EventEmitter(false);
 
-  displayedColumns: string[] = ['#', 'Name'];
+
+
+  durationInSeconds = 5; //Snackbar timer
+  displayedColumns: string[] = ['#', 'Name', 'Actions'];
   users$: Observable<User[]>;
 
   constructor(
@@ -35,18 +39,15 @@ export class UsersTableComponent {
       data: errorMsg,
     });
   }
+
+  onEdit(user: User) {
+    this.edit.emit(user);
+  }
+
+  onDelete(id: number) {
+    this.userService.delete(id);
+  }
   ngOnInit(): void {
     // this.loadTodos();
   }
-
-  // private loadTodos() {
-  //   this.todos$ = this.todoService.getAll()
-  //     .pipe(
-  //       catchError((error) => {
-  //         console.log(error);
-  //         throw error;
-  //       }),
-  //       take(1)
-  //     );
-  // }
 }
