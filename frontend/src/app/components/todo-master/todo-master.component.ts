@@ -17,10 +17,10 @@ import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmat
 
 export class TodoMasterComponent implements OnInit {
   todos$: Observable<Todo[]> | null = null;
-  durationInSeconds = 5; //Snackbar timer
+  snackbarTimer = 5;
   constructor(
-    private todoService: TodoService,
     public dialog: MatDialog,
+    private todoService: TodoService,
     private _snackBar: MatSnackBar,
     private router: Router,
     private route: ActivatedRoute,
@@ -57,12 +57,13 @@ export class TodoMasterComponent implements OnInit {
       if (result) {
         this.todoService.delete(todo.id).subscribe(
           () => {
-            this.refresh();
+
             this._snackBar.open('Registro removido com sucesso!', 'X', {
               duration: 5000,
               verticalPosition: 'top',
               horizontalPosition: 'center'
             });
+            this.refresh();
           },
           () => this.onError('Erro ao tentar remover registro.')
         );
@@ -74,7 +75,7 @@ export class TodoMasterComponent implements OnInit {
   }
   onError(errorMsg: string) {
     this._snackBar.openFromComponent(ErrorSnackComponent, {
-      duration: this.durationInSeconds * 1000,
+      duration: this.snackbarTimer * 1000,
       data: errorMsg,
     });
   }

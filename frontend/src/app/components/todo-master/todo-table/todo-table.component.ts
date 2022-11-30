@@ -38,7 +38,7 @@ export class TodoTableComponent {
   }
 
   ngOnInit(): void {
-    // this.loadTodos();
+    
   }
 
   onAdd() {

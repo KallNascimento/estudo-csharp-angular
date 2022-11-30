@@ -1,20 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TodoFormComponent } from './components/todo-master/todo-form/todo-form.component';
-import { TodoMasterComponent } from './components/todo-master/todo-master.component';
-import { UserMasterComponent } from './components/user-master/user-master.component';
-import { UsersFormComponent } from './components/user-master/users-form/users-form.component';
-import { TodoGuard } from './guards/todo.guard';
-import { UsersGuard } from './guards/users.guard';
 
 const routes: Routes = [
-  { path: "user", component: UserMasterComponent },
-  { path: "todo", component: TodoMasterComponent },
-  { path: 'new', component: TodoFormComponent, resolve: { todo: TodoGuard } },
-  { path: 'edit/:id', component: TodoFormComponent, resolve: { todo: TodoGuard } },
-  { path: 'new-user', component: UsersFormComponent, resolve: { user: UsersGuard } },
-  { path: 'edit-user/:id', component: UsersFormComponent, resolve: { user: UsersGuard } },
-  { path: "", pathMatch: 'full', redirectTo: "user" }
+  { path: '', pathMatch: 'full', redirectTo: 'user' },
+  {
+    path: 'todo',
+    loadChildren: () => import('./components/todo-master/todo-routing/todo-routing.module').then(t => t.TodoRoutingModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./components/user-master/users-routing/users-routing.module').then(u => u.UsersRoutingModule)
+  }
 ];
 
 @NgModule({

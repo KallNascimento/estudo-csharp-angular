@@ -67,7 +67,6 @@ export class TodoFormComponent {
   }
 
   onSubmit() {
-    //console.log(this.form.value);
     this.todoService.save(this.form.value)
       .subscribe(result => this.onSuccess('Dados salvos com sucesso!'), error =>
         this.onError('Erro ao salvar a tarefa.'));

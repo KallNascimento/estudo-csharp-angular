@@ -15,9 +15,7 @@ export class UsersTableComponent {
   @Output() edit = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
 
-
-
-  durationInSeconds = 5; //Snackbar timer
+  snackbarTimer = 5;
   displayedColumns: string[] = ['#', 'Name', 'Actions'];
   users$: Observable<User[]>;
 
@@ -35,7 +33,7 @@ export class UsersTableComponent {
   }
   onError(errorMsg: string) {
     this._snackBar.openFromComponent(ErrorSnackComponent, {
-      duration: this.durationInSeconds * 1000,
+      duration: this.snackbarTimer * 1000,
       data: errorMsg,
     });
   }
@@ -48,6 +46,5 @@ export class UsersTableComponent {
     this.userService.delete(id);
   }
   ngOnInit(): void {
-    // this.loadTodos();
   }
 }

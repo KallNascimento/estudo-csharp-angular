@@ -31,10 +31,8 @@ export class UsersFormComponent {
       })
   }
   ngOnInit(): void {
-    // this.loadUsers();
   }
   onSubmit() {
-    //console.log(this.form.value);
     this.userService.save(this.form.value)
       .subscribe(result => this.onSuccess('Dados salvos com sucesso!'), error =>
         this.onError('Erro ao salvar a tarefa.'));

@@ -13,8 +13,6 @@ export class TodoService {
 
   list(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.baseURL).pipe(
-      //delay(5000), //Para testar o spinner
-      //tap(todos => console.log(todos))
     );
   }
   listById(id: number): Observable<Todo> {
@@ -23,7 +21,6 @@ export class TodoService {
 
   save(record: Partial<Todo>): Observable<Todo> {
     if (record.id) {
-      // console.log('update');
       return this.update(record);
     }
     return this.create(record);
