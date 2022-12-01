@@ -3,11 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
-import { Todo } from 'src/app/models/todo';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error-snack.component';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/interfaces/user.type';
+import { User } from 'src/app/types/user.type';
 @Component({
   selector: 'app-user-master',
   templateUrl: './user-master.component.html',
@@ -42,10 +41,13 @@ export class UserMasterComponent implements OnInit, OnDestroy {
 
   onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
-
-    
   }
 
+  onView(user: User) {
+    console.log("Click");
+    this.router.navigate(['view', user.id], { relativeTo: this.route });
+    
+  }
   onEdit(user: User) {
     this.router.navigate(['edit', user.id], { relativeTo: this.route });
   }

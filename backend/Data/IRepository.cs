@@ -1,6 +1,5 @@
-﻿
+﻿//Espécie de contrato em que colocamos tudo que for obrigatório
 using backend.Models;
-
 namespace backend.Data;
 
 public interface IRepository

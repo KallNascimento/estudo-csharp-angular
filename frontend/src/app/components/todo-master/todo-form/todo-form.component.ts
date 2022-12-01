@@ -4,9 +4,8 @@ import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, Observable, take } from 'rxjs';
-import { Todo } from 'src/app/interfaces/todo.type';
-
-import { User } from 'src/app/models/user'
+import { Todo } from 'src/app/types/todo.type';
+import { User } from 'src/app/types/user.type'
 import { TodoService } from 'src/app/services/todo.service';
 import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error-snack.component';
 import { ActivatedRoute } from '@angular/router';
