@@ -1,84 +1,52 @@
-// import { Component, OnInit, TemplateRef } from '@angular/core';
-// import { Router, ActivatedRoute } from '@angular/router';
-// import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-// import { NgxSpinnerService } from 'ngx-spinner';
-// import { ToastrService } from 'ngx-toastr';
-// import { Subject, takeUntil } from 'rxjs';
-// import { Todo } from 'src/app/models/todo';
-// import { User } from 'src/app/models/user';
-// import { UserService } from 'src/app/services/user.service';
-// import { TitleComponent } from '../../shared/titulo/title.component';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { catchError, Observable, of, take } from 'rxjs';
+import { User } from 'src/app/types/user.type';
+import { UserService } from 'src/app/services/user.service';
+import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error-snack.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AppMaterialModule } from 'src/app/shared/app-material/app-material.module';
 
-// @Component({
-//   selector: 'app-user-details',
-//   templateUrl: './user-details.component.html',
-//   styleUrls: ['./user-details.component.css']
-// })
-// export class UserDetailsComponent implements OnInit {
+@Component({
+    selector: 'app-user-details',
+    templateUrl: './user-details.component.html',
+    styleUrls: ['./user-details.component.css']
+})
+export class UserDetailsComponent implements OnInit {
+    public users$: Observable<User[]>;
+    constructor(
+        private router: Router,
+        private route: ActivatedRoute,
+        private userService: UserService,
+        private _snackBar: MatSnackBar,
+    ) { }
 
-//   public modalRef: BsModalRef;
-//   public selectedUser: User;
-//   public title = '';
-//   private unsubscriber = new Subject();
 
-//   constructor(
-//     private router: Router,
-//     private route: ActivatedRoute,
-//     private userService: UserService,    
-//     private modalService: BsModalService,
-//     private toastr: ToastrService,
-//     private spinner: NgxSpinnerService
-//   ) { }
+    ngOnInit() {
+        //this.loadData;
+    }
 
-//   openModal(template: TemplateRef<any>, todoId: number) {
-//     this.usersTodos(template,todoId);
-//   }
+    // loadData() {
+    //     this.users$ = this.userService.listById(id)
+    //     .pipe(
+    //       catchError((error) => {
+    //         console.log(error);
+    //         throw error;
+    //       }),
+    //       take(1)
+    //     );
+    // }
 
-//   closeModal() {
-//     this.modalRef.hide();
-//   }
 
-//   todosUsers(template: TemplateRef<any>, id: number) {
-//     this.spinner.show();
-//     this.todoService.getByDisciplinaId(id)
-//       .pipe(takeUntil(this.unsubscriber))
-//       .subscribe((todos: Todo[]) => {
-//         this.userTodos = todos;
-//         this.modalRef = this.modalService.show(template);
-//       }, (error: any) => {
-//         this.toastr.error(`erro: ${error}`);
-//         console.log(error);
-//       }, () => this.spinner.hide()
-//     );
-//   }
+    private onError(errorMsg: string) {
+        this._snackBar.openFromComponent(ErrorSnackComponent, {
+            duration: 5000,
+            data: errorMsg,
+        });
+    }
 
-//   ngOnInit() {
-//     this.spinner.show();
-//     this.loadUser();
-//   }
+    ngOnDestroy(): void {
 
-//   loadUser() {
-//     const userId = +this.route.snapshot.paramMap.get('id');
-//     this.userService.getById(userId)
-//       .pipe(takeUntil(this.unsubscriber))
-//       .subscribe((user: User) => {
-//         this.selectedUser = user;
-//         this.title = 'Usuário: ' + this.selectedUser.id;
-//         this.toastr.success('Usuário carregado com Sucesso!');
-//       }, (error: any) => {
-//         this.toastr.error('Usuário não carregados!');
-//         console.log(error);
-//       }, () => this.spinner.hide()
-//     );
-//   }
+    }
 
-//   voltar() {
-//     this.router.navigate(['/user']);
-//   }
-
-//   ngOnDestroy(): void {
-//     this.unsubscriber.next();
-//     this.unsubscriber.complete();
-//   }
-
-// }
+}

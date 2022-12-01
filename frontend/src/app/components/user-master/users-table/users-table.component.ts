@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from 'src/app/interfaces/user.type';
+import { User } from 'src/app/types/user.type';
 
 @Component({
   selector: 'app-users-table',
@@ -11,6 +11,7 @@ export class UsersTableComponent {
   @Input() users: User[] = [];
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
+  @Output() view = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
 
   readonly displayedColumns: string[] = ['#', 'Name', 'Actions'];
@@ -22,6 +23,9 @@ export class UsersTableComponent {
     this.add.emit(true);
   }
 
+  onView(user: User) {
+    this.view.emit(user);
+  }
   onEdit(user: User) {
     this.edit.emit(user);
   }

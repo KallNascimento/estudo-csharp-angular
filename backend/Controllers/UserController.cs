@@ -39,19 +39,14 @@ public class UserController : ControllerBase
         var User = _repo.GetUserById(id, true);
         try
         {
-        var userDto = _mapper.Map<UserDto>(User);
-        return Ok(User);
-            
+            var userDto = _mapper.Map<UserDto>(User);
+            return Ok(User);
         }
         catch (Exception ex)
         {
             return BadRequest($"Erro:{ex.Message}");
-        
         }
-
-
     }
-
 
     // api/User
     [HttpPost]
@@ -73,7 +68,8 @@ public class UserController : ControllerBase
     public IActionResult Put(int id, UserRegisterDto model)
     {
         var user = _repo.GetUserById(id, false);
-        if (user == null) return BadRequest("Usuário não encontrado");
+        if (user == null)
+            return BadRequest("Usuário não encontrado");
 
         _mapper.Map(model, user);
 
@@ -91,7 +87,8 @@ public class UserController : ControllerBase
     public IActionResult Patch(int id, UserRegisterDto model)
     {
         var user = _repo.GetUserById(id, false);
-        if (user == null) return BadRequest("Usuário não encontrado");
+        if (user == null)
+            return BadRequest("Usuário não encontrado");
 
         _mapper.Map(model, user);
 
@@ -108,7 +105,8 @@ public class UserController : ControllerBase
     public IActionResult Delete(int id)
     {
         var user = _repo.GetUserById(id, false);
-        if (user == null) return BadRequest("Usuário não encontrado");
+        if (user == null)
+            return BadRequest("Usuário não encontrado");
 
         _repo.Delete(user);
         if (_repo.SaveChanges())
@@ -119,5 +117,3 @@ public class UserController : ControllerBase
         return BadRequest("Usuário não deletado");
     }
 }
-
-

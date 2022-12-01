@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Todo } from 'src/app/interfaces/todo.type';
+import { Todo } from 'src/app/types/todo.type';
 
 @Component({
   selector: 'app-todo-table',
@@ -13,7 +13,7 @@ export class TodoTableComponent {
   @Output() edit = new EventEmitter(false);
   @Output() remove = new EventEmitter(false);
 
-  readonly displayedColumns: string[] = ['#', 'Description', 'Actions'];
+  readonly displayedColumns: string[] = ['#','User' ,'Description', 'Actions'];
 
   constructor() { }
 

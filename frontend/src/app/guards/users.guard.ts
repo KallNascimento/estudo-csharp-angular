@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Resolve, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { User } from '../interfaces/user.type';
+import { User } from '../types/user.type';
 import { UserService } from '../services/user.service';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class UsersGuard implements Resolve<User> {
     if (route.params && route.params['id']) {
       return this.service.listById(route.params['id']);
     }
-    return of({ id: 0, name: '' });
+    return of({ id: 0, name: '', todos: [''] });
   }
 }
 

@@ -1,4 +1,5 @@
-﻿using backend.Models;
+﻿//  abstrai a camada de acesso ao banco de dados, tornando transparente para a camada de negócio a tecnologia utilizada
+using backend.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Data;
@@ -32,7 +33,7 @@ public class Repository : IRepository
         return (_context.SaveChanges() > 0);
     }
 
-    public User[] GetAllUsers(bool includeTodos = false)
+    public User[] GetAllUsers(bool includeTodos = true)
     {
         IQueryable<User> query = _context.Users;
 

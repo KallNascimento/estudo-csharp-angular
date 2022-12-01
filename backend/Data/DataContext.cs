@@ -1,3 +1,8 @@
+/*  
+Rastreia as alterações feitas em todas as entidades recuperadas e mantém um "cache de identidade" 
+ que garante que as entidades recuperadas 
+ mais de uma vez sejam representadas usando a mesma instância de objeto
+ */
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
 

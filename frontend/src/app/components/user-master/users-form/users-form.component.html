@@ -1,4 +1,4 @@
-<mat-card style="border-radius:10px">
+<mat-card style="border-radius:10px;  max-width: 500px;">
     <mat-toolbar style="border-radius: 10px 10px 0 0;">Cadastro de Usuários</mat-toolbar>
     <form [formGroup]="form" #formDir="ngForm" class="form-group-flex">
 
@@ -6,8 +6,7 @@
 
         <mat-form-field>
             <mat-label for="description">Nome</mat-label>
-            <input matInput type="text" formControlName="name" id=""
-                matTooltip="Entre com os dados do usuário.">
+            <input matInput type="text" formControlName="name" matTooltip="Entre com os dados do usuário.">
         </mat-form-field>
 
         <mat-card-actions class="buttons">

@@ -4,8 +4,8 @@ import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, Observable, take } from 'rxjs';
-import { User } from 'src/app/models/user'
+import { Observable } from 'rxjs';
+import { User } from 'src/app/types/user.type'
 import { UserService } from 'src/app/services/user.service';
 import { ErrorSnackComponent } from 'src/app/shared/components/error-snack/error-snack.component';
 @Component({
@@ -33,8 +33,6 @@ export class UsersFormComponent {
     private route: ActivatedRoute,
     private location: Location,
     public dialog: MatDialog,
-    //public dialogRef: MatDialogRef<TodoFormComponent>,
-    // @Inject(MAT_DIALOG_DATA) public todo: Todo,
   ) { }
 
 
